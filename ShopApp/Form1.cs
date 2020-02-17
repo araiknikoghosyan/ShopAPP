@@ -59,16 +59,16 @@ namespace ShopApp
         {
             string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ShopDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
-            using(SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
 
-               await connection.OpenAsync();
-                SqlCommand comand = new SqlCommand("INSERT Into[Store](NameProducts,Quantity,Price)VALUES(@NameProducts,@Quantity,@price)",connection);
+                await connection.OpenAsync();
+                SqlCommand comand = new SqlCommand("INSERT Into[Store](NameProducts,Quantity,Price)VALUES(@NameProducts,@Quantity,@price)", connection);
                 comand.Parameters.AddWithValue("NameProducts", textBox1.Text);
                 comand.Parameters.AddWithValue("Quantity", textBox2.Text);
                 comand.Parameters.AddWithValue("Price", textBox3.Text);
 
-               int number =  comand.ExecuteNonQuery();
+                int number = comand.ExecuteNonQuery();
                 MessageBox.Show($"Insert Element ");
             }
         }
@@ -86,6 +86,7 @@ namespace ShopApp
 
 
                 comand.ExecuteNonQuery();
+                MessageBox.Show($"Delete Element ");
             }
         }
 
@@ -105,12 +106,22 @@ namespace ShopApp
 
 
                 comand.ExecuteNonQuery();
+                MessageBox.Show($"UPDATE Element ");
             }
         }
 
-        private void updateAppToolStripMenuItem_Click(object sender, EventArgs e)
+        private void button4_Click(object sender, EventArgs e)
         {
-            
+            string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ShopDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand("SELECT SUM(Price*Quantity) FROM STORE  ", connection);
+                var sum = command.ExecuteScalar();
+                MessageBox.Show(Convert.ToString("SUM=" + sum));
+
+            }
         }
     }
 
