@@ -30,9 +30,12 @@
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.updateDBToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.updateAppToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.button4 = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.label1 = new System.Windows.Forms.Label();
@@ -56,15 +59,18 @@
             this.button2 = new System.Windows.Forms.Button();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.updateAppToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.tabPage8 = new System.Windows.Forms.TabPage();
             this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
+            this.tabPage5.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -80,9 +86,18 @@
             // 
             // файлToolStripMenuItem
             // 
+            this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.updateDBToolStripMenuItem});
             this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
             this.файлToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.файлToolStripMenuItem.Text = "Файл";
+            // 
+            // updateDBToolStripMenuItem
+            // 
+            this.updateDBToolStripMenuItem.Name = "updateDBToolStripMenuItem";
+            this.updateDBToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.updateDBToolStripMenuItem.Text = "UpdateDB";
+            this.updateDBToolStripMenuItem.Click += new System.EventHandler(this.updateDBToolStripMenuItem_Click);
             // 
             // ToolsToolStripMenuItem
             // 
@@ -92,12 +107,22 @@
             this.ToolsToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.ToolsToolStripMenuItem.Text = "Tools";
             // 
+            // updateAppToolStripMenuItem
+            // 
+            this.updateAppToolStripMenuItem.Name = "updateAppToolStripMenuItem";
+            this.updateAppToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.updateAppToolStripMenuItem.Text = "UpdateApp";
+            // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
+            this.tabControl1.Controls.Add(this.tabPage5);
+            this.tabControl1.Controls.Add(this.tabPage6);
+            this.tabControl1.Controls.Add(this.tabPage7);
+            this.tabControl1.Controls.Add(this.tabPage8);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 24);
             this.tabControl1.Name = "tabControl1";
@@ -114,8 +139,18 @@
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(787, 397);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Select";
+            this.tabPage1.Text = "SelectStore";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(573, 60);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.TabIndex = 1;
+            this.button4.Text = "Sum";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // listBox1
             // 
@@ -141,7 +176,7 @@
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(787, 397);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Insert";
+            this.tabPage2.Text = "InsertProduct";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // label1
@@ -217,7 +252,7 @@
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Size = new System.Drawing.Size(787, 397);
             this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Update";
+            this.tabPage3.Text = "UpdateProduct";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // textBox6
@@ -303,7 +338,7 @@
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Size = new System.Drawing.Size(787, 397);
             this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "Delete";
+            this.tabPage4.Text = "DeleteProduct";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
             // button2
@@ -333,37 +368,59 @@
             this.label7.TabIndex = 16;
             this.label7.Text = "ID";
             // 
-            // updateAppToolStripMenuItem
+            // tabPage5
             // 
-            this.updateAppToolStripMenuItem.Name = "updateAppToolStripMenuItem";
-            this.updateAppToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.updateAppToolStripMenuItem.Text = "UpdateApp";
+            this.tabPage5.Controls.Add(this.button3);
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Size = new System.Drawing.Size(787, 397);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "SelectEmployes";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            this.tabPage5.Click += new System.EventHandler(this.tabPage5_Click);
+            // 
+            // tabPage6
+            // 
+            this.tabPage6.Location = new System.Drawing.Point(4, 22);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Size = new System.Drawing.Size(787, 397);
+            this.tabPage6.TabIndex = 5;
+            this.tabPage6.Text = "InsertEmployes";
+            this.tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // tabPage7
+            // 
+            this.tabPage7.Location = new System.Drawing.Point(4, 22);
+            this.tabPage7.Name = "tabPage7";
+            this.tabPage7.Size = new System.Drawing.Size(787, 397);
+            this.tabPage7.TabIndex = 6;
+            this.tabPage7.Text = "DeleteEmployes";
+            this.tabPage7.UseVisualStyleBackColor = true;
+            // 
+            // tabPage8
+            // 
+            this.tabPage8.Location = new System.Drawing.Point(4, 22);
+            this.tabPage8.Name = "tabPage8";
+            this.tabPage8.Size = new System.Drawing.Size(787, 397);
+            this.tabPage8.TabIndex = 7;
+            this.tabPage8.Text = "tabPage8";
+            this.tabPage8.UseVisualStyleBackColor = true;
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(477, 81);
+            this.button3.Location = new System.Drawing.Point(636, 44);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(8, 8);
-            this.button3.TabIndex = 2;
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 0;
             this.button3.Text = "button3";
             this.button3.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(573, 60);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 1;
-            this.button4.Text = "button4";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(795, 447);
-            this.Controls.Add(this.button3);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -380,6 +437,7 @@
             this.tabPage3.PerformLayout();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
+            this.tabPage5.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -417,6 +475,11 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ToolStripMenuItem updateAppToolStripMenuItem;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.ToolStripMenuItem updateDBToolStripMenuItem;
+        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.TabPage tabPage6;
+        private System.Windows.Forms.TabPage tabPage7;
+        private System.Windows.Forms.TabPage tabPage8;
         private System.Windows.Forms.Button button3;
     }
 }
