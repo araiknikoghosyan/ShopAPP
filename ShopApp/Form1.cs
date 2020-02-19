@@ -32,7 +32,7 @@ namespace ShopApp
 
                 while (await reader.ReadAsync())
                 {
-                    listBox1.Items.Add(Convert.ToString(reader["ID"]) + " " + Convert.ToString(reader["NameProducts"]) + " " + Convert.ToString(reader["Quantity"]) + " " + Convert.ToString(reader["Price"]));
+                    listBox1.Items.Add(Convert.ToString(reader["ID"]) + "\t " + Convert.ToString(reader["NameProducts"]) + "\t" + Convert.ToString(reader["Quantity"]) + "\t" + Convert.ToString(reader["Price"]));
                 }
             }
             catch (Exception ex)
@@ -119,7 +119,7 @@ namespace ShopApp
 
                 while (await reader.ReadAsync())
                 {
-                    listBox1.Items.Add(Convert.ToString(reader["ID"]) + " " + Convert.ToString(reader["NameProducts"]) + " " + Convert.ToString(reader["Quantity"]) + " " + Convert.ToString(reader["Price"]));
+                    listBox1.Items.Add(Convert.ToString(reader["ID"]) + "\t" + Convert.ToString(reader["NameProducts"]) + "\t" + Convert.ToString(reader["Quantity"]) + "\t" + Convert.ToString(reader["Price"]));
                 }
             }
             catch (Exception ex)
@@ -147,7 +147,7 @@ namespace ShopApp
 
                 while (await reader.ReadAsync())
                 {
-                    listBox1.Items.Add(Convert.ToString(reader["ID"]) + " " + Convert.ToString(reader["Name"]) + " " + Convert.ToString(reader["SureName"]) + " " + Convert.ToString(reader["Age"]));
+                    listBox2.Items.Add(Convert.ToString(reader["ID"]) + "\t" + Convert.ToString(reader["Name"]) + "\t" + Convert.ToString(reader["SureName"]) + "\t" + Convert.ToString(reader["Age"]));
                 }
             }
             catch (Exception ex)
@@ -162,10 +162,9 @@ namespace ShopApp
             }
         }
 
-        private async void button3_Click(object sender, EventArgs e)
+        private async void button5_Click(object sender, EventArgs e)
         {
-
-            string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ShopDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+            string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ShopDB;Integrated Security=True;Connect Timeout=3;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
             var connection = new SqlConnection(connectionString);
             SqlDataReader reader = null;
             await connection.OpenAsync();
@@ -176,8 +175,10 @@ namespace ShopApp
 
                 while (await reader.ReadAsync())
                 {
-                    listBox1.Items.Add(Convert.ToString(reader["ID"]) + " " + Convert.ToString(reader["Name"]) + " " + Convert.ToString(reader["SureName"]) + " " + Convert.ToString(reader["Age"]));
+
+                    listBox2.Items.Add(Convert.ToString(reader["ID"]) + "\t" + Convert.ToString(reader["Name"]) + "\t" + Convert.ToString(reader["SureName"]) + "\t" + Convert.ToString(reader["Age"]));
                 }
+            
             }
             catch (Exception ex)
             {
@@ -188,9 +189,60 @@ namespace ShopApp
             {
                 if (reader != null)
                     reader.Close();
-
             }
+
+
+        }
+
+        private async void button6_Click(object sender, EventArgs e)
+        {
+
+            string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ShopDB;Connect Timeout=3;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                await connection.OpenAsync();
+                var comand = new SqlCommand("INSERT Into[Employes](Name,Surename,Age)VALUES(@Name,@SureName,@Age)", connection);
+                comand.Parameters.AddWithValue("Name", textBox8.Text);
+                comand.Parameters.AddWithValue("SureName", textBox10.Text);
+                comand.Parameters.AddWithValue("Age", textBox9.Text);
+
+                int number = comand.ExecuteNonQuery();
+                MessageBox.Show($"Insert Employes ");
+            }
+        }
+
+        private async void button7_Click(object sender, EventArgs e)
+        {
+            string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ShopDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                await connection.OpenAsync();
+                var comand = new SqlCommand("DELETE  EMPLOYES WHERE [ID]=@ID", connection);
+                comand.Parameters.AddWithValue("ID", textBox11.Text);
+                comand.ExecuteNonQuery();
+                MessageBox.Show($"Delete Emploes");
+            }
+        }
+        private static void UserAD()
+        {
+            string login = "ADMIN";
+            string pasword = "123";
+            if (login == "ADMIN" && pasword == "123")
+            {
+               
+            }
+
+        }
+        private void button8_Click(object sender, EventArgs e)
+        {
+            UserAD();
+            string login = "13";
+            textBox1.Text=login;
         }
     }
 
+
 }
+
+
