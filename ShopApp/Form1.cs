@@ -20,7 +20,6 @@ namespace ShopApp
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e) { }
         private async void Form1_Load(object sender, EventArgs e)
         {
-
             string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ShopDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
             var connection = new SqlConnection(connectionString);
             SqlDataReader reader = null;
@@ -46,7 +45,7 @@ namespace ShopApp
                     reader.Close();
             }
         }
-        private async void button1_Click(object sender, EventArgs e)
+        private async void InsertProduct(object sender, EventArgs e)
         {
             string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ShopDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
@@ -63,7 +62,7 @@ namespace ShopApp
             }
         }
 
-        private async void button2_Click(object sender, EventArgs e)
+        private async void DeleteProducts(object sender, EventArgs e)
         {
             string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ShopDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -72,17 +71,15 @@ namespace ShopApp
                 var comand = new SqlCommand("DELETE  STORE WHERE [ID]=@ID", connection);
                 comand.Parameters.AddWithValue("ID", textBox7.Text);
                 comand.ExecuteNonQuery();
-                MessageBox.Show($"Delete Element ");
+                MessageBox.Show($"Delete Products ");
             }
         }
 
         private async void Update_Click(object sender, EventArgs e)
         {
             string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ShopDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-
                 await connection.OpenAsync();
                 var comand = new SqlCommand("UPDATE  [STORE] SET [NameProducts]=@NameProducts, [Quantity]=@Quantity,[Price]=@Price WHERE [ID]=@ID", connection);
                 comand.Parameters.AddWithValue("ID", textBox6.Text);
@@ -94,7 +91,7 @@ namespace ShopApp
             }
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void SumInProducts(object sender, EventArgs e)
         {
             string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ShopDB;Integrated Security=True;Connect Timeout=3;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -117,6 +114,7 @@ namespace ShopApp
             {
                 reader = await command.ExecuteReaderAsync();
 
+                listBox1.Items.Clear();
                 while (await reader.ReadAsync())
                 {
                     listBox1.Items.Add(Convert.ToString(reader["ID"]) + "\t" + Convert.ToString(reader["NameProducts"]) + "\t" + Convert.ToString(reader["Quantity"]) + "\t" + Convert.ToString(reader["Price"]));
@@ -161,8 +159,7 @@ namespace ShopApp
                     reader.Close();
             }
         }
-
-        private async void button5_Click(object sender, EventArgs e)
+        private async void ReadEmployes(object sender, EventArgs e)
         {
             string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ShopDB;Integrated Security=True;Connect Timeout=3;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
             var connection = new SqlConnection(connectionString);
@@ -178,7 +175,7 @@ namespace ShopApp
 
                     listBox2.Items.Add(Convert.ToString(reader["ID"]) + "\t" + Convert.ToString(reader["Name"]) + "\t" + Convert.ToString(reader["SureName"]) + "\t" + Convert.ToString(reader["Age"]));
                 }
-            
+
             }
             catch (Exception ex)
             {
@@ -190,15 +187,10 @@ namespace ShopApp
                 if (reader != null)
                     reader.Close();
             }
-
-
         }
-
-        private async void button6_Click(object sender, EventArgs e)
+        private async void InsertEmployes(object sender, EventArgs e)
         {
-
             string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ShopDB;Connect Timeout=3;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 await connection.OpenAsync();
@@ -212,7 +204,7 @@ namespace ShopApp
             }
         }
 
-        private async void button7_Click(object sender, EventArgs e)
+        private async void DeleteEmployes(object sender, EventArgs e)
         {
             string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ShopDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -230,7 +222,7 @@ namespace ShopApp
             string pasword = "123";
             if (login == "ADMIN" && pasword == "123")
             {
-               
+
             }
 
         }
@@ -238,11 +230,40 @@ namespace ShopApp
         {
             UserAD();
             string login = "13";
-            textBox1.Text=login;
+            textBox1.Text = login;
+        }
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+        private async void updateEMPLOYESToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ShopDB;Integrated Security=True;Connect Timeout=3;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+            var connection = new SqlConnection(connectionString);
+            SqlDataReader reader = null;
+            await connection.OpenAsync();
+            SqlCommand command = new SqlCommand("Select * From [Employes]", connection);
+            try
+            {
+                reader = await command.ExecuteReaderAsync();
+                listBox2.Items.Clear();
+                while (await reader.ReadAsync())
+                {
+                    listBox2.Items.Add(Convert.ToString(reader["ID"]) + "\t" + Convert.ToString(reader["Name"]) + "\t" + Convert.ToString(reader["SureName"]) + "\t" + Convert.ToString(reader["Age"]));
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+
+            }
+            finally
+            {
+                if (reader != null)
+                    reader.Close();
+            }
         }
     }
-
-
 }
 
 
