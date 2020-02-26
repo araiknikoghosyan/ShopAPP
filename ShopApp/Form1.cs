@@ -14,15 +14,13 @@ namespace ShopApp
 {
     public partial class Form1 : Form
     {
-
-
         static string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ShopDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
         public Form1()
         {
             InitializeComponent();
         }
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e) { }
-       
+
         private async void InsertProduct(object sender, EventArgs e)
         {
             string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ShopDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
@@ -68,34 +66,13 @@ namespace ShopApp
 
             var connection = new SqlConnection(connectionString);
             connection.Open();
-            //SqlDataReader reader = null;
-            //await connection.OpenAsync();
-            //SqlCommand command = new SqlCommand("Select * From [Employes]", connection);
-            //try
-            //{
-            // reader = await command.ExecuteReaderAsync();
-
-            //while (await reader.ReadAsync())
-            //{
+           
             SqlDataAdapter adapter = new SqlDataAdapter("Select * From [Employes]", connection);
             DataSet ds = new DataSet();
             adapter.Fill(ds);
 
             dataGridView1.DataSource = ds.Tables[0];
-            //listBox2.Items.Add(Convert.ToString(reader["ID"]) + "\t" + Convert.ToString(reader["Name"]) + "\t" + Convert.ToString(reader["SureName"]) + "\t" + Convert.ToString(reader["Age"]));
-            // }
-
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message);
-
-            //}
-            //finally
-            //{
-            //    if (reader != null)
-            //        reader.Close();
-            //}
+            
         }
         private async void InsertEmployes(object sender, EventArgs e)
         {
@@ -145,13 +122,6 @@ namespace ShopApp
         {
 
         }
-
-
-        private void label14_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void button8_Click_1(object sender, EventArgs e)
         {
 
