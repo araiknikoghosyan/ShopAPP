@@ -24,7 +24,6 @@ namespace ShopApp
         private async void InsertProduct(object sender, EventArgs e)
         {
             string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ShopDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 await connection.OpenAsync();
@@ -43,11 +42,14 @@ namespace ShopApp
             string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ShopDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                await connection.OpenAsync();
-                var comand = new SqlCommand("DELETE  STORE WHERE [ID]=@ID", connection);
-                comand.Parameters.AddWithValue("ID", textBox7.Text);
-                comand.ExecuteNonQuery();
-                MessageBox.Show($"Delete Products ");
+                if (MessageBox.Show("Sure?", "DELETE", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+                {
+
+                    await connection.OpenAsync();
+                    var comand = new SqlCommand("DELETE  STORE WHERE [ID]=@ID", connection);
+                    comand.Parameters.AddWithValue("ID", textBox7.Text);
+                    comand.ExecuteNonQuery();
+                }
             }
         }
         private void SumInProducts(object sender, EventArgs e)
@@ -66,13 +68,13 @@ namespace ShopApp
 
             var connection = new SqlConnection(connectionString);
             connection.Open();
-           
+
             SqlDataAdapter adapter = new SqlDataAdapter("Select * From [Employes]", connection);
             DataSet ds = new DataSet();
             adapter.Fill(ds);
 
             dataGridView1.DataSource = ds.Tables[0];
-            
+
         }
         private async void InsertEmployes(object sender, EventArgs e)
         {
@@ -102,32 +104,6 @@ namespace ShopApp
                 MessageBox.Show($"Delete Emploes");
             }
         }
-        private static void UserAD()
-        {
-            string login = "ADMIN";
-            string pasword = "123";
-            if (login == "ADMIN" && pasword == "123")
-            {
-
-            }
-
-        }
-        private void button8_Click(object sender, EventArgs e)
-        {
-            UserAD();
-            string login = "13";
-            textBox1.Text = login;
-        }
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-        private void button8_Click_1(object sender, EventArgs e)
-        {
-
-
-        }
-
         private void SelectStor_Click(object sender, EventArgs e)
         {
             var connection = new SqlConnection(connectionString);
