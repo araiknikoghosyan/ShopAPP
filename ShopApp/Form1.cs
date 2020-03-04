@@ -14,7 +14,7 @@ namespace ShopApp
 {
     public partial class Form1 : Form
     {
-        static string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ShopDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        static string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ShopDb_1;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
         public Form1()
         {
             InitializeComponent();
@@ -23,7 +23,8 @@ namespace ShopApp
 
         private async void InsertProduct(object sender, EventArgs e)
         {
-            string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ShopDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+            
+
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 await connection.OpenAsync();
@@ -39,7 +40,7 @@ namespace ShopApp
 
         private async void DeleteProducts(object sender, EventArgs e)
         {
-            string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ShopDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+          
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 if (MessageBox.Show("Sure?", "DELETE", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
@@ -78,7 +79,7 @@ namespace ShopApp
         }
         private async void InsertEmployes(object sender, EventArgs e)
         {
-            string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ShopDB;Connect Timeout=3;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+         
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 await connection.OpenAsync();
@@ -94,7 +95,7 @@ namespace ShopApp
 
         private async void DeleteEmployes(object sender, EventArgs e)
         {
-            string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ShopDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+           
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 await connection.OpenAsync();
