@@ -14,7 +14,7 @@ namespace ShopApp
 {
     public partial class Form1 : Form
     {
-        static string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ShopDb_1;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        static string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ShopApp;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
         public Form1()
         {
             InitializeComponent();
@@ -23,7 +23,7 @@ namespace ShopApp
 
         private async void InsertProduct(object sender, EventArgs e)
         {
-            
+
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -40,7 +40,7 @@ namespace ShopApp
 
         private async void DeleteProducts(object sender, EventArgs e)
         {
-          
+
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 if (MessageBox.Show("Sure?", "DELETE", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
@@ -66,7 +66,6 @@ namespace ShopApp
         }
         private void ReadEmployes(object sender, EventArgs e)
         {
-
             var connection = new SqlConnection(connectionString);
             connection.Open();
 
@@ -74,12 +73,12 @@ namespace ShopApp
             DataSet ds = new DataSet();
             adapter.Fill(ds);
 
-            dataGridView1.DataSource = ds.Tables[0];
+            DtgEmployes.DataSource = ds.Tables[0];
 
         }
         private async void InsertEmployes(object sender, EventArgs e)
         {
-         
+
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 await connection.OpenAsync();
@@ -95,14 +94,18 @@ namespace ShopApp
 
         private async void DeleteEmployes(object sender, EventArgs e)
         {
-           
+
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                await connection.OpenAsync();
-                var comand = new SqlCommand("DELETE  EMPLOYES WHERE [ID]=@ID", connection);
-                comand.Parameters.AddWithValue("ID", textBox11.Text);
-                comand.ExecuteNonQuery();
-                MessageBox.Show($"Delete Emploes");
+                if (MessageBox.Show("Sure?", "DELETE", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+                {
+
+                    await connection.OpenAsync();
+                    var comand = new SqlCommand("DELETE  Employes WHERE [ID]=@ID", connection);
+                    comand.Parameters.AddWithValue("ID", textBox11.Text);
+                    comand.ExecuteNonQuery();
+                    MessageBox.Show("Delete Employes");
+                }
             }
         }
         private void SelectStor_Click(object sender, EventArgs e)
@@ -112,7 +115,56 @@ namespace ShopApp
             SqlDataAdapter adapter = new SqlDataAdapter("Select * From [Store]", connection);
             DataSet ds = new DataSet();
             adapter.Fill(ds);
-            dataGridView2.DataSource = ds.Tables[0];
+            DtgStore.DataSource = ds.Tables[0];
+        }
+
+        private void Update_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                var comand = new SqlCommand("Update Store Set(ID,NameProducts,Quantity,Price)(@ID,@NameProducts,@Quantity,@Price)  WHERE [ID]=@ID", connection);
+                comand.Parameters.AddWithValue("ID", Product_ID.Text);
+                comand.Parameters.AddWithValue("NameProducts", ProductNM.Text);
+                comand.Parameters.AddWithValue("Quantity", QuantityUpdate.Text);
+                comand.Parameters.AddWithValue("Price", ProductPrice.Text);
+                comand.ExecuteNonQuery();
+                MessageBox.Show($"Update Employes ");
+            }
+        }
+        private void dataGridView2_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (DtgStore.Rows != null)
+            {
+                MessageBox.Show("Добавлено в корзину");
+            }
+            else
+            {
+                MessageBox.Show("Row is Empty");
+            }
+
+        }
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(comboBox1.Text== "Employes")
+            {
+                var connection = new SqlConnection(connectionString);
+                connection.Open();
+                SqlDataAdapter adapter = new SqlDataAdapter("Select * From [Employes]", connection);
+                DataSet ds = new DataSet();
+                adapter.Fill(ds);
+                DtgStore.DataSource = ds.Tables[0];
+            }
+            else if (comboBox1.Text == "Store")
+            {
+                var connection = new SqlConnection(connectionString);
+                connection.Open();
+                SqlDataAdapter adapter = new SqlDataAdapter("Select * From [Store]", connection);
+                DataSet ds = new DataSet();
+                adapter.Fill(ds);
+                DtgStore.DataSource = ds.Tables[0];
+            }
+           
         }
     }
 }

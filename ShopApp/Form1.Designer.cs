@@ -53,15 +53,15 @@
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.button5 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.DtgEmployes = new System.Windows.Forms.DataGridView();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.button2 = new System.Windows.Forms.Button();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.Product_ID = new System.Windows.Forms.TextBox();
+            this.QuantityUpdate = new System.Windows.Forms.TextBox();
+            this.ProductPrice = new System.Windows.Forms.TextBox();
             this.ProductNM = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -77,20 +77,21 @@
             this.label2 = new System.Windows.Forms.Label();
             this.NameProduct = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.SelectStor = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.DtgStore = new System.Windows.Forms.DataGridView();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage8.SuspendLayout();
             this.tabPage7.SuspendLayout();
             this.tabPage6.SuspendLayout();
             this.tabPage5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DtgEmployes)).BeginInit();
             this.tabPage4.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DtgStore)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -115,7 +116,7 @@
             this.tabPage8.Controls.Add(this.label12);
             this.tabPage8.Location = new System.Drawing.Point(4, 22);
             this.tabPage8.Name = "tabPage8";
-            this.tabPage8.Size = new System.Drawing.Size(787, 421);
+            this.tabPage8.Size = new System.Drawing.Size(877, 421);
             this.tabPage8.TabIndex = 7;
             this.tabPage8.Text = "Shopping Card";
             this.tabPage8.UseVisualStyleBackColor = true;
@@ -128,7 +129,6 @@
             this.button8.TabIndex = 6;
             this.button8.Text = "Add";
             this.button8.UseVisualStyleBackColor = true;
-            
             // 
             // textBox14
             // 
@@ -185,7 +185,7 @@
             this.tabPage7.Controls.Add(this.label11);
             this.tabPage7.Location = new System.Drawing.Point(4, 22);
             this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Size = new System.Drawing.Size(787, 421);
+            this.tabPage7.Size = new System.Drawing.Size(877, 421);
             this.tabPage7.TabIndex = 6;
             this.tabPage7.Text = "DeleteEmployes";
             this.tabPage7.UseVisualStyleBackColor = true;
@@ -227,7 +227,7 @@
             this.tabPage6.Controls.Add(this.textBox8);
             this.tabPage6.Location = new System.Drawing.Point(4, 22);
             this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Size = new System.Drawing.Size(787, 421);
+            this.tabPage6.Size = new System.Drawing.Size(877, 421);
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "InsertEmployes";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -293,10 +293,10 @@
             // tabPage5
             // 
             this.tabPage5.Controls.Add(this.button5);
-            this.tabPage5.Controls.Add(this.dataGridView1);
+            this.tabPage5.Controls.Add(this.DtgEmployes);
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(787, 421);
+            this.tabPage5.Size = new System.Drawing.Size(877, 421);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "SelectEmployes";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -311,14 +311,14 @@
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.ReadEmployes);
             // 
-            // dataGridView1
+            // DtgEmployes
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(787, 421);
-            this.dataGridView1.TabIndex = 3;
+            this.DtgEmployes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DtgEmployes.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DtgEmployes.Location = new System.Drawing.Point(0, 0);
+            this.DtgEmployes.Name = "DtgEmployes";
+            this.DtgEmployes.Size = new System.Drawing.Size(877, 421);
+            this.DtgEmployes.TabIndex = 3;
             // 
             // tabPage4
             // 
@@ -327,7 +327,7 @@
             this.tabPage4.Controls.Add(this.label7);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(787, 421);
+            this.tabPage4.Size = new System.Drawing.Size(877, 421);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "DeleteProduct";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -361,9 +361,9 @@
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.textBox6);
-            this.tabPage3.Controls.Add(this.textBox4);
-            this.tabPage3.Controls.Add(this.textBox5);
+            this.tabPage3.Controls.Add(this.Product_ID);
+            this.tabPage3.Controls.Add(this.QuantityUpdate);
+            this.tabPage3.Controls.Add(this.ProductPrice);
             this.tabPage3.Controls.Add(this.ProductNM);
             this.tabPage3.Controls.Add(this.label6);
             this.tabPage3.Controls.Add(this.label3);
@@ -372,31 +372,31 @@
             this.tabPage3.Controls.Add(this.label5);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(787, 421);
+            this.tabPage3.Size = new System.Drawing.Size(877, 421);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "UpdateProduct";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // textBox6
+            // Product_ID
             // 
-            this.textBox6.Location = new System.Drawing.Point(81, 13);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(100, 20);
-            this.textBox6.TabIndex = 15;
+            this.Product_ID.Location = new System.Drawing.Point(81, 13);
+            this.Product_ID.Name = "Product_ID";
+            this.Product_ID.Size = new System.Drawing.Size(100, 20);
+            this.Product_ID.TabIndex = 15;
             // 
-            // textBox4
+            // QuantityUpdate
             // 
-            this.textBox4.Location = new System.Drawing.Point(81, 73);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 12;
+            this.QuantityUpdate.Location = new System.Drawing.Point(81, 73);
+            this.QuantityUpdate.Name = "QuantityUpdate";
+            this.QuantityUpdate.Size = new System.Drawing.Size(100, 20);
+            this.QuantityUpdate.TabIndex = 12;
             // 
-            // textBox5
+            // ProductPrice
             // 
-            this.textBox5.Location = new System.Drawing.Point(81, 110);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 20);
-            this.textBox5.TabIndex = 8;
+            this.ProductPrice.Location = new System.Drawing.Point(81, 110);
+            this.ProductPrice.Name = "ProductPrice";
+            this.ProductPrice.Size = new System.Drawing.Size(100, 20);
+            this.ProductPrice.TabIndex = 8;
             // 
             // ProductNM
             // 
@@ -422,7 +422,6 @@
             this.label3.Size = new System.Drawing.Size(46, 13);
             this.label3.TabIndex = 13;
             this.label3.Text = "Quantity";
-           
             // 
             // Update
             // 
@@ -432,6 +431,7 @@
             this.Update.TabIndex = 11;
             this.Update.Text = "Update";
             this.Update.UseVisualStyleBackColor = true;
+            this.Update.Click += new System.EventHandler(this.Update_Click);
             // 
             // label4
             // 
@@ -463,7 +463,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(787, 421);
+            this.tabPage2.Size = new System.Drawing.Size(877, 421);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "InsertProduct";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -528,16 +528,29 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.comboBox1);
             this.tabPage1.Controls.Add(this.SelectStor);
             this.tabPage1.Controls.Add(this.button4);
-            this.tabPage1.Controls.Add(this.dataGridView2);
+            this.tabPage1.Controls.Add(this.DtgStore);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(787, 421);
+            this.tabPage1.Size = new System.Drawing.Size(877, 421);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "SelectStore";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Store",
+            "Employes"});
+            this.comboBox1.Location = new System.Drawing.Point(639, 16);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.TabIndex = 2;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // SelectStor
             // 
@@ -551,7 +564,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(685, 62);
+            this.button4.Location = new System.Drawing.Point(765, 155);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 23);
             this.button4.TabIndex = 1;
@@ -559,14 +572,15 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.SumInProducts);
             // 
-            // dataGridView2
+            // DtgStore
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView2.Location = new System.Drawing.Point(3, 3);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(781, 415);
-            this.dataGridView2.TabIndex = 2;
+            this.DtgStore.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DtgStore.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DtgStore.Location = new System.Drawing.Point(3, 3);
+            this.DtgStore.Name = "DtgStore";
+            this.DtgStore.Size = new System.Drawing.Size(871, 415);
+            this.DtgStore.TabIndex = 2;
+            this.DtgStore.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView2_RowHeaderMouseDoubleClick);
             // 
             // tabControl1
             // 
@@ -582,14 +596,14 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(795, 447);
+            this.tabControl1.Size = new System.Drawing.Size(885, 447);
             this.tabControl1.TabIndex = 1;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(795, 447);
+            this.ClientSize = new System.Drawing.Size(885, 447);
             this.Controls.Add(this.tabControl1);
             this.Name = "Form1";
             this.Text = "ShopApp";
@@ -600,7 +614,7 @@
             this.tabPage6.ResumeLayout(false);
             this.tabPage6.PerformLayout();
             this.tabPage5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DtgEmployes)).EndInit();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
             this.tabPage3.ResumeLayout(false);
@@ -608,7 +622,7 @@
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.tabPage1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DtgStore)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -638,16 +652,16 @@
         private System.Windows.Forms.TextBox textBox9;
         private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.TabPage tabPage5;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView DtgEmployes;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox Product_ID;
+        private System.Windows.Forms.TextBox QuantityUpdate;
+        private System.Windows.Forms.TextBox ProductPrice;
         private System.Windows.Forms.TextBox ProductNM;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label3;
@@ -665,8 +679,9 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView DtgStore;
         private System.Windows.Forms.Button SelectStor;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
 
